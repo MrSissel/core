@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../../dist/vue.global.js"></script>
+  </head>
+  <body>
+    <button id="btn1">click</button>
+    <button id="btn2">invoker-click</button>
+    <script>
+      const btnEl = document.querySelector('button#btn1')
+      const handle = () => {
+        alert('hello world')
+      }
+      btnEl.addEventListener('click', handle)
+      setTimeout(() => {
+        btnEl.removeEventListener('click', handle)
+        btnEl.addEventListener('click', () => {
+          alert('hello world-changed')
+        })
+      }, 2000)
+
+      const btnEl2 = document.querySelector('button#btn2')
+      const invoker = () => {
+        invoker.value()
+      }
+      invoker.value = () => {
+        alert('hello world')
+      }
+      btnEl2.addEventListener('click', invoker)
+      setTimeout(() => {
+        invoker.value = () => {
+          alert('hello world-changed')
+        }
+      }, 2000)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../../dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const { h, render } = Vue
+
+      const vnode = h(
+        'button',
+        {
+          onClick: () => {
+            alert('single click')
+          }
+        },
+        'single click'
+      )
+
+      render(vnode, document.querySelector('#app'))
+
+      setTimeout(() => {
+        const vnode = h(
+          'button',
+          {
+            onDblclick: () => {
+              alert('double click')
+            }
+          },
+          'double click'
+        )
+        render(vnode, document.querySelector('#app'))
+      }, 2000)
+    </script>
+  </body>
+</html>

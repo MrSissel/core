@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const { reactive, computed, effect } = Vue
+
+      const obj = reactive({
+        name: 'Jesse Pinkman'
+      })
+
+      const computedObj = computed(() => {
+        console.log('计算属性执行计算')
+        return 'Name：' + obj.name
+      })
+
+      effect(() => {
+        document.querySelector('#app').innerHTML = computedObj.value
+        document.querySelector('#app').innerHTML = computedObj.value
+      })
+
+      setTimeout(() => {
+        obj.name = 'Walter White'
+      }, 2000)
+    </script>
+  </body>
+</html>

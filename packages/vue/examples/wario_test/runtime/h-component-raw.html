@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../../dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const { h, render } = Vue
+
+      const component = {
+        render() {
+          return {
+            shapeFlag: 9,
+            type: 'div',
+            children: 'this is a component',
+            __v_isVNode: true
+          }
+        }
+      }
+
+      render(
+        {
+          type: component,
+          shapeFlag: 4,
+          __v_isVNode: true
+        },
+        document.querySelector('#app')
+      )
+    </script>
+  </body>
+</html>

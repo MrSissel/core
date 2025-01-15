@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const { reactive, watch } = Vue
+
+      const obj = reactive({
+        name: 'Jesse Pinkman'
+      })
+
+      watch(
+        obj,
+        (newValue, oldValue) => {
+          console.log(
+            `Job function is executed! newValue:${JSON.stringify(
+              newValue
+            )}, oldvalue:${JSON.stringify(oldValue)}`
+          )
+          console.log(newValue === oldValue)
+        },
+        { immediate: true }
+      )
+
+      setTimeout(() => {
+        obj.name = 'Walter White'
+      }, 2000)
+    </script>
+  </body>
+</html>

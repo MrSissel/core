@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../../dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const { h, render } = Vue
+
+      const vnode = h(
+        'div',
+        {
+          key: 1,
+          class: 'test'
+        },
+        'hello world'
+      )
+
+      const vnode2 = h(
+        'div',
+        {
+          key: 1,
+          class: 'new-test'
+        },
+        'hello new world'
+      )
+
+
+      function isSameVNodeType(n1, n2) {
+        return n1.type === n2.type && n1.key === n2.key
+      }
+
+
+      console.log(vnode, vnode2, isSameVNodeType(vnode, vnode2))
+    </script>
+  </body>
+</html>
